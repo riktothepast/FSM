@@ -2,7 +2,7 @@
 
 It's a generic state machine that allows to define states and transitions for any entity on you game. The goal of the FSM is to provide a way to handle an entity behaivour state, transitions and to help to mantain an reuse code.
 
-[[https://github.com/riktothepast/fsm/blob/master/img/fsm.png|alt=fsm]]
+[[https://github.com/riktothepast/FSM/blob/master/fsm.png|alt=fsm]]
 
 ### Creating a new FSM
 
@@ -35,5 +35,6 @@ Adds a condition (a `boolean` function) when this condition is met, the FSM will
 
 # Check the included demo
 
-[[https://github.com/riktothepast/fsm/blob/master/img/roboCollector.gif|alt=roboCollector]]
+[[https://github.com/riktothepast/FSM/blob/master/roboCollector.gif|alt=roboCollector]]
+
 Assets provided by https://kenney.nl/
