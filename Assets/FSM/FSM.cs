@@ -17,6 +17,11 @@ namespace FiveOTwoStudios.StateMachine
             currentState.OnStateEnter();
         }
 
+        public State<T> GetState()
+        {
+            return currentState;
+        }
+
         public void Update(float deltaTime)
         {
             if (currentState != null)
