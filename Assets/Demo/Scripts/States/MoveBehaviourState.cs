@@ -7,11 +7,22 @@ namespace FiveOTwoStudios.StateMachine
         [SerializeField]
         protected float moveSpeed;
         protected Collectable collectable;
+        Robot robot;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            robot = (Robot)fsm;
+        }
 
         void AssignCollectable()
         {
             collectable = FindObjectOfType<Collectable>();
-            ((Robot)fsm).collectable = collectable;
+            if (collectable)
+            {
+                robot.collectable = collectable;
+                robot.spriteRenderer.flipX = transform.position.x > collectable.transform.position.x ? true : false;
+            }
         }
 
         public override void OnStateEnter()

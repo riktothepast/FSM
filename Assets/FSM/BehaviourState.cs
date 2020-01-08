@@ -8,13 +8,17 @@ namespace FiveOTwoStudios.StateMachine
         public Transition[] transitions;
 
         protected BehaviourFSM fsm;
-        public virtual void Awake()
+        protected virtual void Awake()
         {
             fsm = GetComponent<BehaviourFSM>();
             foreach (Transition trans in transitions)
             {
                 trans.transitionEvent.Initialize(fsm);
             }
+        }
+
+        protected void Start()
+        {
             if (defaultState)
             {
                 fsm.SetState(this);
