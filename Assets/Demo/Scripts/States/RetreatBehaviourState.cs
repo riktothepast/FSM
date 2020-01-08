@@ -7,17 +7,19 @@ namespace FiveOTwoStudios.StateMachine
         [SerializeField]
         protected float moveSpeed;
         Vector3 spawnPosition;
+        Robot robot;
 
-        public override void Awake()
+        protected override void Awake()
         {
             base.Awake();
-
+            robot = (Robot)fsm;
             spawnPosition = transform.position;
         }
 
         public override void OnStateEnter()
         {
             ReinitializeTransitions();
+            robot.spriteRenderer.flipX = transform.position.x > spawnPosition.x ? true : false;
         }
 
         public override void OnStateExit()
