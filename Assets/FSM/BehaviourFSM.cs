@@ -13,6 +13,7 @@ namespace FiveOTwoStudios.StateMachine
             if (currentState != null)
             {
                 currentState.OnStateExit();
+                currentState.ReinitializeTransitions();
             }
             currentState = state;
             currentState.OnStateEnter();
