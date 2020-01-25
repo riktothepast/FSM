@@ -2,14 +2,14 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FSM/Transition/Returned")]
-public class Returned : TransitionEvent
+public class Returned : TransitionEvent<Robot>
 {
     Robot robo;
     Vector3 spawnPosition;
 
-    public override void Initialize(BehaviourFSM fsm)
+    public override void Initialize(BehaviourFSM<Robot> fsm, Robot robot)
     {
-        base.Initialize(fsm);
+        base.Initialize(fsm, robot);
         robo = (Robot)fsm;
         spawnPosition = robo.transform.position;
     }

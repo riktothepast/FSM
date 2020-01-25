@@ -2,13 +2,13 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FSM/Transition/Collected")]
-public class Collected : TransitionEvent
+public class Collected : TransitionEvent<Robot>
 {
     Robot robo;
 
-    public override void Initialize(BehaviourFSM fsm)
+    public override void Initialize(BehaviourFSM<Robot> fsm, Robot entity)
     {
-        base.Initialize(fsm);
+        base.Initialize(fsm, entity);
         robo = (Robot)fsm;
     }
 

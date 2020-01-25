@@ -320,9 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultState: 1
-  transitions:
-  - transitionEvent: {fileID: 11400000, guid: 8ad3c99922ea97f4087c91c4264d26ad, type: 2}
-    state: {fileID: 1066715940}
+  soTransition:
+  - {fileID: 11400000, guid: 8ad3c99922ea97f4087c91c4264d26ad, type: 2}
   moveSpeed: 2
 --- !u!114 &1066715936
 MonoBehaviour:
@@ -337,7 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateType: 0
-  animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collectable: {fileID: 0}
 --- !u!95 &1066715937
@@ -434,9 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultState: 0
-  transitions:
-  - transitionEvent: {fileID: 11400000, guid: 34f10c00cddf43644b5bfbe3ae73235f, type: 2}
-    state: {fileID: 1066715935}
+  soTransition: []
   moveSpeed: 2
 --- !u!1 &1498277708
 GameObject:

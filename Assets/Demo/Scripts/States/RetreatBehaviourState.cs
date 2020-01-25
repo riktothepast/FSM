@@ -2,24 +2,24 @@
 
 namespace FiveOTwoStudios.StateMachine
 {
-    public class RetreatBehaviourState : BehaviourState
+    public class RetreatBehaviourState : BehaviourState<Robot>
     {
         [SerializeField]
         protected float moveSpeed;
         Vector3 spawnPosition;
-        Robot robot;
+        [SerializeField]
+        Transition<Robot>[] trans;
 
         protected override void Awake()
         {
             base.Awake();
-            robot = (Robot)fsm;
             spawnPosition = transform.position;
         }
 
         public override void OnStateEnter()
         {
             ReinitializeTransitions();
-            robot.spriteRenderer.flipX = transform.position.x > spawnPosition.x ? true : false;
+            entity.spriteRenderer.flipX = transform.position.x > spawnPosition.x ? true : false;
         }
 
         public override void OnStateExit()

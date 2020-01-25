@@ -2,13 +2,13 @@
 
 namespace FiveOTwoStudios.StateMachine
 {
-    public class BehaviourFSM : MonoBehaviour
+    public abstract class BehaviourFSM<T> : MonoBehaviour
     {
         [SerializeField]
         protected UpdateType updateType;
-        protected BehaviourState currentState;
+        protected BehaviourState<T> currentState;
 
-        public void SetState(BehaviourState state)
+        public void SetState(BehaviourState<T> state)
         {
             if (currentState != null)
             {
@@ -19,7 +19,7 @@ namespace FiveOTwoStudios.StateMachine
             currentState.OnStateEnter();
         }
 
-        public BehaviourState GetState()
+        public BehaviourState<T> GetState()
         {
             return currentState;
         }
@@ -35,7 +35,7 @@ namespace FiveOTwoStudios.StateMachine
 
         void CheckStateTransitions(float deltaTime)
         {
-            foreach (Transition transition in currentState.transitions)
+            foreach (Transition<T> transition in currentState.transitions)
             {
                 if (transition.transitionEvent.Evaluate(deltaTime))
                 {

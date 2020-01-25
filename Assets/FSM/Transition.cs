@@ -3,9 +3,9 @@
 namespace FiveOTwoStudios.StateMachine
 {
     [Serializable]
-    public class Transition
+    public class Transition<T>
     {
-        public TransitionEvent transitionEvent;
-        public BehaviourState state;
+        public TransitionEvent<T> transitionEvent;
+        public BehaviourState<T> state;
     }
 }

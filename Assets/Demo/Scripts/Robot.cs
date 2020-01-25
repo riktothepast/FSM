@@ -1,7 +1,7 @@
 ﻿using FiveOTwoStudios.StateMachine;
 using UnityEngine;
 
-public class Robot : BehaviourFSM
+public class Robot : BehaviourFSM<Robot>
 {
     [HideInInspector]
     public SpriteRenderer spriteRenderer;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace FiveOTwoStudios.StateMachine
 {
-    public abstract class BehaviourState<T> : MonoBehaviour
+    public abstract class BehaviourSO<T> : ScriptableObject
     {
         public bool defaultState;
         [SerializeField]
@@ -13,7 +13,6 @@ namespace FiveOTwoStudios.StateMachine
 
         protected virtual void Awake()
         {
-            fsm = GetComponent<BehaviourFSM<T>>();
             Debug.Log(transitions);
             foreach (Transition<T> trans in transitions)
             {
@@ -25,7 +24,7 @@ namespace FiveOTwoStudios.StateMachine
         {
             if (defaultState)
             {
-                fsm.SetState(this);
+                
             }
         }
 

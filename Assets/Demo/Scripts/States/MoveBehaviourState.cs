@@ -2,7 +2,7 @@
 
 namespace FiveOTwoStudios.StateMachine
 {
-    public class MoveBehaviourState : BehaviourState
+    public class MoveBehaviourState : BehaviourState<Robot>
     {
         [SerializeField]
         protected float moveSpeed;
@@ -12,7 +12,7 @@ namespace FiveOTwoStudios.StateMachine
         protected override void Awake()
         {
             base.Awake();
-            robot = (Robot)fsm;
+            robot.collectable = null;
         }
 
         void AssignCollectable()
