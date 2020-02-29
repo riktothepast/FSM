@@ -300,6 +300,8 @@ GameObject:
   - component: {fileID: 1066715936}
   - component: {fileID: 1066715935}
   - component: {fileID: 1066715940}
+  - component: {fileID: 1066715942}
+  - component: {fileID: 1066715941}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -321,7 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 1
   transitions:
-  - transitionEvent: {fileID: 11400000, guid: 8ad3c99922ea97f4087c91c4264d26ad, type: 2}
+  - transitionEvent: {fileID: 1066715942}
     state: {fileID: 1066715940}
   moveSpeed: 2
 --- !u!114 &1066715936
@@ -337,7 +339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateType: 0
-  animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collectable: {fileID: 0}
 --- !u!95 &1066715937
@@ -435,9 +436,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   transitions:
-  - transitionEvent: {fileID: 11400000, guid: 34f10c00cddf43644b5bfbe3ae73235f, type: 2}
+  - transitionEvent: {fileID: 1066715941}
     state: {fileID: 1066715935}
   moveSpeed: 2
+--- !u!114 &1066715941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066715934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c245d837b756e4a8f257083f3c1e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1066715942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066715934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e96a3c4ee31f649960dd1bac239ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1498277708
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,11 @@
-﻿using UnityEngine;
+﻿using FiveOTwoStudios.StateMachine;
+using UnityEngine;
 
-namespace FiveOTwoStudios.StateMachine
+public abstract class TransitionEvent : MonoBehaviour
 {
-    public abstract class TransitionEvent : ScriptableObject
-    {
-        protected BehaviourFSM fsm;
+    protected BehaviourFSM fsm;
 
-        public abstract bool Evaluate();
-        public virtual void Initialize(BehaviourFSM fsm) { this.fsm = fsm; }
-        public virtual void Reset() { }
-    }
+    public abstract bool Evaluate();
+    public virtual void Initialize(BehaviourFSM fsm) { this.fsm = fsm; }
+    public virtual void Reset() { }
 }

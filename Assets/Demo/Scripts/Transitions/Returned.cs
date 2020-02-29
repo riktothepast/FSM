@@ -1,7 +1,6 @@
 ﻿using FiveOTwoStudios.StateMachine;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "FSM/Transition/Returned")]
 public class Returned : TransitionEvent
 {
     Robot robo;
