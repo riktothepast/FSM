@@ -10,13 +10,10 @@ namespace FiveOTwoStudios.StateMachine
 
         public void SetState(BehaviourState state)
         {
-            if (currentState != null)
-            {
-                currentState.OnStateExit();
-                currentState.ReinitializeTransitions();
-            }
+            currentState?.OnStateExit();
+            currentState?.ReinitializeTransitions();
             currentState = state;
-            currentState.OnStateEnter();
+            currentState?.OnStateEnter();
         }
 
         public BehaviourState GetState()
