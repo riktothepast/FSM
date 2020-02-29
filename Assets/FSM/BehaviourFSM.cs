@@ -13,6 +13,7 @@ namespace FiveOTwoStudios.StateMachine
             if (currentState != null)
             {
                 currentState.OnStateExit();
+                currentState.ReinitializeTransitions();
             }
             currentState = state;
             currentState.OnStateEnter();
@@ -27,16 +28,16 @@ namespace FiveOTwoStudios.StateMachine
         {
             if (currentState != null)
             {
-                CheckStateTransitions();
+                CheckStateTransitions(deltaTime);
                 currentState.StateUpdate(deltaTime);
             }
         }
 
-        void CheckStateTransitions()
+        void CheckStateTransitions(float deltaTime)
         {
             foreach (Transition transition in currentState.transitions)
             {
-                if (transition.transitionEvent.Evaluate())
+                if (transition.transitionEvent.Evaluate(deltaTime))
                 {
                     SetState(transition.state);
                     break;

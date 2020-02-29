@@ -13,7 +13,8 @@ public class Robot : BehaviourFSM
 ```
 
 Then you can assign it to a `GameObject` and start assigning States and Transitions
-![alt fsm](https://github.com/riktothepast/FSM/blob/master/FSMInEditor.png)
+
+![alt fsm](https://github.com/riktothepast/FSM/blob/master/FSMInEditor.PNG)
 
 
 #### SetState(BehaviourState state)

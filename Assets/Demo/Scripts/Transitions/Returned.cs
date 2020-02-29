@@ -13,7 +13,7 @@ public class Returned : TransitionEvent
         spawnPosition = robo.transform.position;
     }
 
-    public override bool Evaluate()
+    public override bool Evaluate(float deltaTime)
     {
         return Vector2.Distance(spawnPosition, robo.transform.position) < 0.25f;
     }

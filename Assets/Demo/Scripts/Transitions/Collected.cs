@@ -11,7 +11,7 @@ public class Collected : TransitionEvent
         robo = (Robot)fsm;
     }
 
-    public override bool Evaluate()
+    public override bool Evaluate(float deltaTime)
     {
         if (!robo.collectable)
         {
