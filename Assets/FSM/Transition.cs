@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace FiveOTwoStudios.StateMachine
 {
@@ -6,6 +7,7 @@ namespace FiveOTwoStudios.StateMachine
     public class Transition
     {
         public TransitionEvent transitionEvent;
+        public ScriptableObject transitionConfiguration;
         public BehaviourState state;
     }
 }

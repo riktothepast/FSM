@@ -11,8 +11,8 @@ namespace FiveOTwoStudios.StateMachine
         public void SetState(BehaviourState state)
         {
             currentState?.OnStateExit();
-            currentState?.ReinitializeTransitions();
             currentState = state;
+            currentState?.ReinitializeTransitions();
             currentState?.OnStateEnter();
         }
 

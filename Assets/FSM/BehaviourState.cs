@@ -29,7 +29,7 @@ namespace FiveOTwoStudios.StateMachine
         {
             foreach (Transition trans in transitions)
             {
-                trans.transitionEvent.Reset();
+                trans.transitionEvent.Reset(trans.transitionConfiguration);
             }
         }
 
