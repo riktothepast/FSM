@@ -297,9 +297,7 @@ GameObject:
   - component: {fileID: 1066715939}
   - component: {fileID: 1066715938}
   - component: {fileID: 1066715937}
-  - component: {fileID: 1066715936}
   - component: {fileID: 1066715935}
-  - component: {fileID: 1066715940}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -316,27 +314,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1066715934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908447dafa421144dade833990ce24a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bede2e632269e44380e9d7a4693ef3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultState: 1
-  soTransition:
-  - {fileID: 11400000, guid: 8ad3c99922ea97f4087c91c4264d26ad, type: 2}
-  moveSpeed: 2
---- !u!114 &1066715936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066715934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08af73c1cf6290b4a99ac12be7df7197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updateType: 0
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1066715938}
   collectable: {fileID: 0}
 --- !u!95 &1066715937
 Animator:
@@ -419,21 +400,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1066715940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066715934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf21c3cfb2098c44484605760ce61f95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultState: 0
-  soTransition: []
-  moveSpeed: 2
 --- !u!1 &1498277708
 GameObject:
   m_ObjectHideFlags: 0

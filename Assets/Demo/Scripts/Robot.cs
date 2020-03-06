@@ -1,19 +1,25 @@
-﻿using FiveOTwoStudios.StateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Robot : BehaviourFSM<Robot>
+public class Robot : FSM<Robot>
 {
-    [HideInInspector]
+    [SerializeField]
     public SpriteRenderer spriteRenderer;
     public Collectable collectable;
+    private Vector2 initialPosition;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        InitializeStates(this);
+        initialPosition = transform.position;
     }
 
     public void ClearCurrentCollectable()
     {
         Destroy(collectable.gameObject);
+    }
+
+    public Vector2 GetInitialPosition()
+    {
+        return initialPosition;
     }
 }

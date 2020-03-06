@@ -2,35 +2,38 @@
 
 namespace FiveOTwoStudios.StateMachine
 {
-    public class RetreatBehaviourState : BehaviourState<Robot>
+    public class RetreatBehaviourState : State<Robot>
     {
         [SerializeField]
         protected float moveSpeed;
         Vector3 spawnPosition;
-        [SerializeField]
-        Transition<Robot>[] trans;
 
-        protected override void Awake()
+        public override void Initialize()
         {
-            base.Awake();
-            spawnPosition = transform.position;
+            spawnPosition = entity.GetInitialPosition();
         }
 
-        public override void OnStateEnter()
+        public override void StateUpdate(Animator animator)
         {
-            ReinitializeTransitions();
-            entity.spriteRenderer.flipX = transform.position.x > spawnPosition.x ? true : false;
+            Vector3 position = spawnPosition - entity.transform.position;
+            entity.transform.position += position * moveSpeed * Time.deltaTime;
+
+            animator.SetBool("isIdling", Evaluate());
         }
 
-        public override void OnStateExit()
+        public override void OnStateEnter(Animator animator)
         {
-
+            entity.spriteRenderer.flipX = entity.transform.position.x > spawnPosition.x ? true : false;
         }
 
-        public override void StateUpdate(float deltaTime)
+        public override void OnStateExit(Animator animator)
         {
-            Vector3 position = spawnPosition - transform.position;
-            transform.position += position * moveSpeed * deltaTime;
+            entity.ResetAllTransitionConditions();
+        }
+
+        public bool Evaluate()
+        {
+            return Vector2.Distance(spawnPosition, entity.transform.position) < 0.25f;
         }
     }
 }
