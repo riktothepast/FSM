@@ -1,60 +1,63 @@
-﻿using UnityEngine;
+﻿using net.fiveotwo.fsm;
+using UnityEngine;
 
-namespace FiveOTwoStudios.StateMachine
+public class MoveBehaviourState : State<Robot>
 {
-    public class MoveBehaviourState : State<Robot>
+    [SerializeField]
+    protected float moveSpeed;
+    protected Collectable collectable;
+    [Header("State Transitions")]
+    [AnimationStateName]
+    [SerializeField]
+    protected string retratingState;
+
+    void AssignCollectable()
     {
-        [SerializeField]
-        protected float moveSpeed;
-        protected Collectable collectable;
-
-        void AssignCollectable()
+        collectable = FindObjectOfType<Collectable>();
+        if (collectable)
         {
-            collectable = FindObjectOfType<Collectable>();
-            if (collectable)
-            {
-                entity.collectable = collectable;
-                entity.spriteRenderer.flipX = entity.transform.position.x > collectable.transform.position.x ? true : false;
-            }
+            entity.collectable = collectable;
+            entity.spriteRenderer.flipX = entity.transform.position.x > collectable.transform.position.x ? true : false;
         }
+    }
 
-        public override void Initialize()
+    public override void Initialize()
+    {
+        entity.collectable = null;
+    }
+
+    public override void StateUpdate(Animator animator)
+    {
+        if (!collectable)
         {
-            entity.collectable = null;
+            return;
         }
+        Vector3 position = collectable.transform.position - entity.transform.position;
+        entity.transform.position += position * moveSpeed * Time.deltaTime;
+        if (IsNearCollectable()) {
+            entity.SetState(retratingState);
+        }
+    }
 
-        public override void StateUpdate(Animator animator)
+    public override void OnStateEnter(Animator animator)
+    {
+        AssignCollectable();
+    }
+
+    public override void OnStateExit(Animator animator)
+    {
+        Destroy(collectable.gameObject);
+        collectable = null;
+
+        entity.ResetAllTransitionConditions();
+    }
+
+    public bool IsNearCollectable()
+    {
+        if (!collectable)
         {
-            if (!collectable)
-            {
-                return;
-            }
-            Vector3 position = collectable.transform.position - entity.transform.position;
-            entity.transform.position += position * moveSpeed * Time.deltaTime;
-
-            animator.SetBool("isRetreating", Evaluate());
+            return false;
         }
-
-        public override void OnStateEnter(Animator animator)
-        {
-            AssignCollectable();
-        }
-
-        public override void OnStateExit(Animator animator)
-        {
-            Destroy(collectable.gameObject);
-            collectable = null;
-
-            entity.ResetAllTransitionConditions();
-        }
-
-        public bool Evaluate()
-        {
-            if (!collectable)
-            {
-                return false;
-            }
-            return Vector2.Distance(collectable.transform.position, entity.transform.position) < 0.25f;
-        }
+        return Vector2.Distance(collectable.transform.position, entity.transform.position) < 0.25f;
     }
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace FiveOTwoStudios.StateMachine
+namespace net.fiveotwo.fsm
 {
     public abstract class State<E> : StateMachineBehaviour
     {
@@ -31,5 +31,6 @@ namespace FiveOTwoStudios.StateMachine
         public abstract void OnStateEnter(Animator animator);
 
         public abstract void OnStateExit(Animator animator);
+
     }
 }

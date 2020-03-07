@@ -1,25 +1,36 @@
-﻿using FiveOTwoStudios.StateMachine;
-using UnityEngine;
-
-[RequireComponent(typeof(Animator))]
-public class FSM<E> : MonoBehaviour
+﻿using UnityEngine;
+namespace net.fiveotwo.fsm
 {
-    protected Animator animator;
+    [RequireComponent(typeof(Animator))]
+    public class FSM<E> : MonoBehaviour
+    {
+        protected Animator animator;
+        protected State<E>[] states;
+        protected string currentStateName;
 
-    public void InitializeStates(E entity) {
-        animator = GetComponent<Animator>();
-        State<E>[] states = animator.GetBehaviours<State<E>>();
-        foreach (State<E> state in states)
+        public void InitializeStates(E entity)
         {
-            state.SetFSM(entity);
-            state.Initialize();
+            animator = GetComponent<Animator>();
+            states = animator.GetBehaviours<State<E>>();
+            foreach (State<E> state in states)
+            {
+                state.SetFSM(entity);
+                state.Initialize();
+            }
         }
-    }
 
-    public void ResetAllTransitionConditions() {
-        foreach (AnimatorControllerParameter parameter in animator.parameters)
+        public void SetState(string stateName)
         {
-            animator.SetBool(parameter.name, false);
+            animator.Play(stateName);
+            currentStateName = stateName;
+        }
+
+        public void ResetAllTransitionConditions()
+        {
+            foreach (AnimatorControllerParameter parameter in animator.parameters)
+            {
+                animator.SetBool(parameter.name, false);
+            }
         }
     }
 }

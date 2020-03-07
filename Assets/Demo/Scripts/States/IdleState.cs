@@ -1,8 +1,13 @@
-﻿using FiveOTwoStudios.StateMachine;
+﻿using net.fiveotwo.fsm;
 using UnityEngine;
 
 public class IdleState : State<Robot>
 {
+    [Header("State Transitions")]
+    [AnimationStateName]
+    [SerializeField]
+    protected string movingState;
+
     public override void OnStateEnter(Animator animator)
     {
         
@@ -15,6 +20,9 @@ public class IdleState : State<Robot>
 
     public override void StateUpdate(Animator animator)
     {
-        animator.SetBool("isMoving", FindObjectOfType<Collectable>() != null);
+        if (FindObjectOfType<Collectable>() != null)
+        {
+            entity.SetState(movingState);
+        }
     }
 }

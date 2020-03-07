@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using net.fiveotwo.fsm;
+using UnityEngine;
 
 public class Robot : FSM<Robot>
 {
